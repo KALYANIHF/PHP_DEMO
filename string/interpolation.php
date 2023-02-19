@@ -47,14 +47,65 @@ how many ways you can print a string in php
 4. print_r [for debuging only]
  */
 
-$something = <<< start
-boo
-hoo
+// $something = <<< start
+// boo
+// hoo
 
-start;
+// start;
 
-echo $something;
-$first_Name = "Souvik";
-$last_Name = "Mondal";
+// echo $something;
+// $first_Name = "Souvik";
+// $last_Name = "Mondal";
 
-echo "$first_Name", "$last_Name";
+// echo "$first_Name", "$last_Name";
+
+/*
+type of specifier in php
+1. %
+2. b
+3. d
+4. f
+5. F
+6. e
+7. E
+8. %
+9. o
+10. u
+11. x
+12. X
+13. s
+14. g
+15. G
+16. c
+ */
+// $string = "     this     \l \gggj  is the string that we need to trim         ";
+// $format_String = trim($string);
+// echo $format_String;
+// echo "<br/>";
+// for ($i = 0; $i < strlen($format_String); $i++) {
+//     printf("the %dth chractor in the string is %s \n", $i, $format_String[$i]);
+//     echo "<br/>";
+// }
+
+#this is for encodidng and escaping
+# the main two fun in php that can work on this
+$string = <<< end
+"Stop pulling my hair!" Jan's eyes are flashed<p>
+end;
+// print(htmlentities(htmlentities($string, ENT_COMPAT)));
+
+# to get the transition table call the get_transition_table
+// print(htmlentities(htmlentities($string, ENT_COMPAT)));
+$str1 = htmlentities(htmlentities($string, ENT_COMPAT));
+echo $str1;
+$table = get_html_translation_table(HTML_ENTITIES, ENT_NOQUOTES);
+$table = array_flip($table);
+$string_new = strtr($str1, $table);
+echo $string_new;
+// print_r($table);
+echo "<p>=========================</p>";
+$string = "<p>Something is more important than others <pre>Hello how are you</pre></p>";
+$remove_html_chractor = strip_tags($string, "<pre>");
+echo $remove_html_chractor;
+$get_meta_data = get_meta_tags("https://kalyanihf.github.io/help_desk/");
+print_r($get_meta_data);
